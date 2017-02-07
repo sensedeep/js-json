@@ -30,7 +30,7 @@ export class Json {
                     obj[key] = '{type:regexp}' + value.source
                 } else if (typeof value == 'object') {
                     if (nest < 20) {
-                        Json.encode(value, ++nest)
+                        Json.encode(value, nest + 1)
                     }
                 }
             }

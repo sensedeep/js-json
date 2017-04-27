@@ -22,19 +22,29 @@ export class Json {
         Prepare an object for encoding by JSON.stringify()
      */
     static encode(obj, nest = 0) {
+        let result
         if (obj) {
+            result = Array.isArray(obj) ? [] : {}
             for (let [key,value] of Object.entries(obj)) {
                 if (value instanceof Date) {
-                    obj[key] = '{type:date}' + value.toUTCString()
+                    result[key] = '{type:date}' + value.toUTCString()
+
                 } else if (value instanceof RegExp) {
-                    obj[key] = '{type:regexp}' + value.source
+                    result[key] = '{type:regexp}' + value.source
+
                 } else if (typeof value == 'object') {
                     if (nest < 20) {
-                        Json.encode(value, nest + 1)
+                        result[key] = Json.encode(value, nest + 1)
+                    } else {
+                        result[key] = value
                     }
+                } else {
+                    result[key] = value
                 }
             }
+        } else {
+            result = obj
         }
-        return obj
+        return result
     }
 }

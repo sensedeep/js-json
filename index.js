@@ -2,10 +2,10 @@
     js-json - Json Encoding
  */
 
-export class Json {
+export default class Json {
 
     /*
-        Reviver for JSON.parse(, reviver) 
+        Reviver for JSON.parse(, reviver)
      */
     static decode(key, value) {
         if (typeof value == 'string') {

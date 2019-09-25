@@ -1,7 +1,7 @@
 {
     "name": "js-json",
     "description": "Encoding for json",
-    "version": "0.1.2",
+    "version": "1.0.0",
     "keywords": [
         "node",
         "json"
@@ -19,6 +19,5 @@
     },
     "license": "UNLICENSED",
     "main": "index.js",
-    "export": "*.js",
     "origin": "sensedeep/js-json"
 }
